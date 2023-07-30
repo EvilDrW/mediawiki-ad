@@ -1,0 +1,33 @@
+{
+	"YOUR.DOMAIN": {
+		"connection": {
+			"server": "ldap-server.YOUR.DOMAIN",
+			"port": 636,
+			"user": "cn=your_bind_user,cn=users,dc=YOUR,dc=DOMAIN",
+			"pass": "********",
+			"enctype": "ssl",
+			"options": {
+				"LDAP_OPT_DEREF": 1,
+				"LDAP_OPT_X_TLS_REQUIRE_CERT": 0
+			},
+			"basedn": "dc=YOUR,dc=DOMAIN",
+			"userbasedn": "cn=users,dc=YOUR,dc=DOMAIN",
+			"groupbasedn": "cn=groups,dc=YOUR,dc=DOMAIN",
+			"searchattribute": "cn",
+			"usernameattribute": "cn",
+			"realnameattribute": "displayName",
+			"emailattribute": "mail",
+			"grouprequest": "MediaWiki\\Extension\\LDAPProvider\\UserGroupsRequest\\UserMemberOf::factory",
+			"presearchusernamemodifiers": [ "spacestounderscores", "lowercase" ]
+		},
+		"userinfo": [],
+		"authorization": [],
+		"groupsync": {
+			"mapping": {
+				"bureaucrat": "CN=Bureaucrat Group Name,CN=Users,DC=YOUR,DC=DOMAIN",
+				"interface-admin": "CN=Admin Group Name,CN=Users,DC=YOUR,DC=DOMAIN",
+				"sysop": "CN=Sysop Group Name,CN=Users,DC=YOUR,DC=DOMAIN"
+			}
+		}
+	}
+}
